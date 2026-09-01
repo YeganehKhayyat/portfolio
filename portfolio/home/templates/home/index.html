@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%block title%} Home {% endblock %}
+
+{%block content %}
+
+    <main class="hero-section">
+        <img src="{% static 'home/1.jpg' %}" alt="Yeganeh Khayyat" class="profile-image">
+        <br><br>
+            <div class="pill-container">
+            <span class="pill">Backend developer</span>
+            <span class="pill">Embbeded system designer</span>
+            <span class="pill">Python developer</span>
+        </div>
+        <br><br>
+        <h1><span style="color:#667085; font-family:sans-serif;font-size: 45px;">Yeganeh </span><span style="color:#000000; font-family:sans-serif;font-size: 45px;">Khayyat</span></h1>
+        <p style="color: #667085; font-family: sans-serif;">+3 years experience in the backend projects</p>
+        </main>
+        <br><br>
+        <div class="pill-spec">
+            <a href="{%url 'contact'%}" class="pill-special">Get In Touch</a>
+        </div>
+        
+    
+
+</body>
+{% endblock %}
