@@ -388,3 +388,38 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
 footer .social-links i {
     font-size: 50px; /* سایز دلخواه */
 }
+
+.header-project {
+    
+    padding: 50px 20px;
+}
+
+.grid-wrapper-project{
+    background-color: #fbfbfb;
+    background-image: 
+    linear-gradient(to right, rgba(0 , 0 , 0, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0 , 0 , 0 , 0.09) 1px, transparent 1px);
+
+    background-size: 50px 50px;
+
+    width : 350px;
+    height: 250px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+    margin: 0 auto;
+
+    mask-image: radial-gradient(circle, black 50%, trasparent 100%);
+    -webkit-mask-image: radial-gradient(circle, black 50%, transparent 100%);
+}
+
+.pill-spec-projects {
+    display: flex;
+    /* margin-left:700px ; */
+    margin-top: 50px;
+    gap:15px;
+    align-items: center;
+}
