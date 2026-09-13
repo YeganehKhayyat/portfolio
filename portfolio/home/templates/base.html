@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'home/styles.css' %}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <title>{% block title%} {{ title }} {% endblock %}</title>
 </head>
@@ -19,13 +20,23 @@
     <header class="header">
         <div class="logo"><span style="color: rgb(0, 0, 0);">YG</span><span style="color:#667085;">KH</span>
         </div>
-        <nav class="navbar">
+        <nav class="navbar" style="height: 56px; width: 338px;justify-content: center;align-items: center;">
             <ul class="nav-links">
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{%url 'projects' %}">Projects</a></li>
                 <li><a href="{%url 'contact' %}">Contact</a></li>
             </ul>
+
         </nav>
+                    <div class="floating-theme-toggle">
+
+                                                <label class="switch">
+                            <input type="checkbox" id="theme-toggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                
     </header>
 
     {% block content %}
@@ -113,4 +124,5 @@
 </body>
 
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
