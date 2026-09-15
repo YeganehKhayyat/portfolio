@@ -82,7 +82,7 @@ body {
   transform: translateX(-50%);
   z-index: 1000;
   display: flex;
-  left: 20%;
+  left: 10%;
 }
 
 .navbar{
@@ -255,6 +255,7 @@ input:checked + .slider:before{
     box-shadow: 0 4px 10px rgba(0 , 0 , 0 ,0.05);
     transition: all 0.2s ease-in-out;
     user-select: none;
+    opacity: 0;
 }
 .pill-spec {
     display: flex;
@@ -298,14 +299,9 @@ input:checked + .slider:before{
 }
 
 .card {
-background: #ffffff;
-border: 1px solid #e4e7ec;
-border-radius: 10px;
-padding: 24px;
-width: 100%;
-max-width: 650px;
-box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+width: 650px;
+
 }
 
 .edu-card-top {
@@ -378,15 +374,18 @@ transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 /* باکس بزرگ سفید که تگ‌ها داخلش هستند */
-.skill-tags-box {
+.card
+, .skill-tags-box {
     background: #ffffff;
-    border: 1px solid #eaecf0;
-    border-radius: 16px;
+    border: 1px solid #eaecf0 !important;
+    border-radius: 16px !important;
     padding: 16px;
     display: flex;
     flex-wrap: wrap;      /* ✅ باعث می‌شود تگ‌ها به سطر بعدی بروند */
     gap: 12px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+    box-sizing: border-box;
+    transition: all 0.2s ease;
     
 }
 
@@ -521,3 +520,36 @@ form label {
     font-weight: 600;   
 }
 
+.motion-enter {
+    opacity: 0;
+}
+
+@keyframes parallaxMove {
+    from{
+        transform: translateY(-50px);
+    }
+    to {
+        transform: translateY(50px);
+    }
+}
+
+.parallax-header {
+    animation:parallaxMove linear both;
+    display: inline-block;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100;
+}
+
+.framer > h2 {
+    position: relative;
+    left: -80px;         
+    margin-bottom: 24px; 
+    transition: transform 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+    .framer > h2 {
+        left: 0;
+    }
+}

@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,10 +42,6 @@
     <br><br>
     {% endblock %}
 
-    <br><br>
-    <br><br>
-    <br><br>
-    <br><br>
     <br><br>
     <br><br>
     <!-- Footer Section -->
@@ -120,9 +115,37 @@
 
         </div>
     </footer>
-
-</body>
-
-</html>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+<script>
+    const {animate  ,stagger} = Motion;
+    document.addEventListener("DOMContentLoaded" , () => {
+        animate(
+            ".motion-enter",
+            {
+                opacity : [0 , 1],
+                y : [30 , 0] ,
+                scale : [0.95 , 1]
+            },
+            {
+                duration:0.7 ,
+                easing : [0.16 , 1 , 0.3 , 1],
+                delay : stagger(0.1)
+            }
+        );
+        animate(
+            ".pill",
+            {
+                opacity : [0 , 1],
+                transform : ["translateY(20px) scale (0.96), translateY(0px) scale(1)"]
+            },
+            {
+                delay : Motion.stagger(0.1, {start: 0.15}) ,
+                duration : 0.7,
+                easing : [0.22 , 1 , 0.36 , 1]
+            }
+        );
+    });
+</script>
 </body>
+</html>

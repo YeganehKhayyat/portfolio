@@ -1,7 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from django.shortcuts import render , redirect
 from .forms import DataForm
+from django.shortcuts import render
+from django.core.mail import send_mail , EmailMessage
+from django.conf import settings
+from django.contrib import messages
 
 # Create your views here.
 def home(requests):
@@ -11,24 +13,30 @@ def projects(requests):
     return render(requests, "home/projects.html")
 
 def contact(requests):
-    
+ 
     if requests.POST:
             form = DataForm(requests.POST)
             if form.is_valid():
-                form.save()
-                return render(requests, "home/contact.html")
-            
-            else:
-                form = DataForm()
+                contact_form = form.save()                
+                email = EmailMessage(
+                    subject=f"New message : {contact_form.title}",
+                    body=(
+                        f"Name: {contact_form.name}\n"
+                        f"User email: {contact_form.user_email}\n\n"
+                        f"Message: {contact_form.description}"
+                    ),
+                    from_email=settings.EMAIL_HOST_USER,
+                    to = [settings.CONTACT_EMAIL],
+                    reply_to=[contact_form.user_email],
+                )
                 
-                data = {
-                'form' : form
-                        }
-                return render(requests , "home/contact.html", context=data)
-            
+                email.send(fail_silently=False)
+                if email.send:
+                    messages.success(requests, "Your request sent successfully")
+                    
+                return redirect("contact")
+                
     else:
         form = DataForm()
-        data = {
-            'form' : form
-                }
-        return render(requests , "home/contact.html", context=data)
+        return render(requests , "home/contact.html", {"form" : form})
+    
